@@ -8,18 +8,59 @@ class App extends Component {
     super(props)
   
     this.state = {
-       paint: '',
+       paint: false,
        clickX: [],
        clickY: [],
        clickDrag: []
     }
 
   }
+  
+  mouseDownHandle(e){
+    console.log("Mouse Down");
+    
+    let mouseX = e.pageX - this.offsetLeft;
+    let mouseY = e.pageY - this.offsetTop;
+    this.setState({
+      paint: true
+    });
+    this.addClick(mouseX, mouseY);
+    this.redraw();
+  }
+  mouseMoveHandle(e){
+    console.log("Mouse Moving...");
+    
+    if (this.state.paint) {
+      this.addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+      this.redraw();
+    }
+  }
+  mouseUpHandle(e){
+    console.log("Mouse Up");
+    
+    this.setState({
+      paint: false
+    });
+  }
+  mouseLeaveHandle(e){
+    console.log("Bye Bye...");
+    
+    this.setState({
+      paint: false
+    });
+  }
+  
 
   addClick = (x, y, dragging) => {
-    this.setState.clickX.push(x);
-    this.setState.clickY.push(y);
-    this.setState.clickDrag.push(dragging);
+    var clickXtemp = this.state.clickX.concat(x);
+    var clickYtemp = this.state.clickY.concat(y);
+    var clickDragtemp = this.state.clickDrag.concat(dragging);
+
+    this.setState({
+      clickX: clickXtemp,
+      clickY: clickYtemp,
+      clickDrag: clickDragtemp
+    });
 
   };
 
@@ -42,7 +83,6 @@ class App extends Component {
       context.stroke();
     }
   };
-
 
   render() {
     return (
