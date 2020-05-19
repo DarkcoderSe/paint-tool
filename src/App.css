@@ -17,7 +17,7 @@
 
 #boardDiv {
   background-color: #ffff;
-  border-radius: 10px;
+  border-radius: 0;
   height: 400px;
   width: 600px;
   cursor: crosshair;
