@@ -8,34 +8,48 @@ class App extends Component {
     super(props)
   
     this.state = {
-       
+       paint: '',
+       clickX: [],
+       clickY: [],
+       clickDrag: []
     }
 
-    this.boardIntializer();
-
   }
 
-  boardIntializer = () => {
-    console.log('Board Intialized');
-    const canvasContainer = $('#boardDiv');
+  addClick = (x, y, dragging) => {
+    this.setState.clickX.push(x);
+    this.setState.clickY.push(y);
+    this.setState.clickDrag.push(dragging);
 
-    const canvas = document.createElement('canvas');
-    canvas.setAttribute('width', 600);
-    canvas.setAttribute('height', 400);
-    canvas.setAttribute('id', 'canvas');
+  };
 
-    canvasContainer.appendChild(canvas);
+  redraw = () => {
+    const context = $('#canvas').getContext('2d');
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    context.strokeStyle = '#02b3e4';
+    context.lineJoin = 'round';
+    context.lineWidth = 5;
 
-    // if (typeof G_vmlCanvasManager != 'undefined') {
-    //   canvas = G_vmlCanvasManager.initElement(canvas);
-    // }
-    const context = canvas.getContext('2d');
-  }
+    for (let i = 0; i < this.state.clickX.length; i++) {
+      context.beginPath();
+      if (this.state.clickDrag[i] && i) {
+        context.moveTo(clickX[i - 1], clickY[i - 1]);
+      } else {
+        context.moveTo(clickX[i] - 1, clickY[i]);
+      }
+      context.lineTo(clickX[i], clickY[i]);
+      context.closePath();
+      context.stroke();
+    }
+  };
+
 
   render() {
     return (
       <div className="board-container">
-        <div id="boardDiv"></div>
+        <div id="boardDiv">
+          <canvas id="canvas" height="400" width="600"></canvas>
+        </div>
 
         <button id="clearBoardBtn">
           Clear
