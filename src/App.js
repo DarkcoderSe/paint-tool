@@ -4,7 +4,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="board-container">
         <div id="boardDiv"></div>
 
         <button id="clearBoardBtn">

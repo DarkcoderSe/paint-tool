@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.container {
+.board-container {
   height: 100vh;
   min-width: 100wh;
   background-size: cover;
@@ -14,3 +14,12 @@
   justify-content: center;
 }
 
+
+#boardDiv {
+  background-color: #ffff;
+  border-radius: 10px;
+  height: 400px;
+  width: 600px;
+  cursor: crosshair;
+  border: 1px solid black;
+}
