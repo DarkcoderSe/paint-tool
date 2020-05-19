@@ -33,11 +33,11 @@ class App extends Component {
     for (let i = 0; i < this.state.clickX.length; i++) {
       context.beginPath();
       if (this.state.clickDrag[i] && i) {
-        context.moveTo(clickX[i - 1], clickY[i - 1]);
+        context.moveTo(this.state.clickX[i - 1], this.state.clickY[i - 1]);
       } else {
-        context.moveTo(clickX[i] - 1, clickY[i]);
+        context.moveTo(this.state.clickX[i] - 1, this.state.clickY[i]);
       }
-      context.lineTo(clickX[i], clickY[i]);
+      context.lineTo(this.state.clickX[i], this.state.clickY[i]);
       context.closePath();
       context.stroke();
     }
