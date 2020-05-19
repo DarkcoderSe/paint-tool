@@ -16,7 +16,7 @@ class App extends Component {
 
   }
   
-  mouseDownHandle(e){
+  mouseDownHandle = (e) => {
     console.log("Mouse Down");
     
     let mouseX = e.pageX - this.offsetLeft;
@@ -27,7 +27,7 @@ class App extends Component {
     this.addClick(mouseX, mouseY);
     this.redraw();
   }
-  mouseMoveHandle(e){
+  mouseMoveHandle = (e) => {
     console.log("Mouse Moving...");
     
     if (this.state.paint) {
@@ -35,14 +35,14 @@ class App extends Component {
       this.redraw();
     }
   }
-  mouseUpHandle(e){
+  mouseUpHandle = (e) => {
     console.log("Mouse Up");
     
     this.setState({
       paint: false
     });
   }
-  mouseLeaveHandle(e){
+  mouseLeaveHandle = (e) => {
     console.log("Bye Bye...");
     
     this.setState({
@@ -50,7 +50,6 @@ class App extends Component {
     });
   }
   
-
   addClick = (x, y, dragging) => {
     var clickXtemp = this.state.clickX.concat(x);
     var clickYtemp = this.state.clickY.concat(y);
@@ -65,7 +64,7 @@ class App extends Component {
   };
 
   redraw = () => {
-    const context = $('#canvas').getContext('2d');
+    const context = document.getElementById('canvas').getContext('2d');
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     context.strokeStyle = '#02b3e4';
     context.lineJoin = 'round';
@@ -87,7 +86,12 @@ class App extends Component {
   render() {
     return (
       <div className="board-container">
-        <div id="boardDiv">
+        <div id="boardDiv"
+          onMouseDown={this.mouseDownHandle}
+          onMouseUp={this.mouseUpHandle}
+          onMouseMove={this.mouseMoveHandle}
+          onMouseLeave={this.mouseLeaveHandle}
+        >
           <canvas id="canvas" height="400" width="600"></canvas>
         </div>
 
