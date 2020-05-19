@@ -19,8 +19,11 @@ class App extends Component {
   mouseDownHandle = (e) => {
     console.log("Mouse Down");
     
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
+    let mouseX = e.pageX - document.getElementById('canvas').offsetLeft;
+    let mouseY = e.pageY - document.getElementById('canvas').offsetTop;
+
+    // console.log(`ePage:${e.pageX} offsetLeft:${document.getElementById('canvas').offsetLeft}`);
+
     this.setState({
       paint: true
     });
@@ -31,7 +34,7 @@ class App extends Component {
     console.log("Mouse Moving...");
     
     if (this.state.paint) {
-      this.addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+      this.addClick(e.pageX - document.getElementById('canvas').offsetLeft, e.pageY - document.getElementById('canvas').offsetTop, true);
       this.redraw();
     }
   }
@@ -51,6 +54,8 @@ class App extends Component {
   }
   
   addClick = (x, y, dragging) => {
+    console.log(`x:${x} y:${y} d:${dragging}`);
+    
     var clickXtemp = this.state.clickX.concat(x);
     var clickYtemp = this.state.clickY.concat(y);
     var clickDragtemp = this.state.clickDrag.concat(dragging);
@@ -95,9 +100,6 @@ class App extends Component {
           <canvas id="canvas" height="400" width="600"></canvas>
         </div>
 
-        <button id="clearBoardBtn">
-          Clear
-        </button>
       </div>
     )
   }
