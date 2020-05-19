@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      oo
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="container">
+        <div id="boardDiv"></div>
+
+        <button id="clearBoardBtn">
+          Clear
+        </button>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
