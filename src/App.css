@@ -2,36 +2,27 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  background-color: #e9ebee;
 }
 
 .board-container {
-  /* height: 100vh;
-  min-width: 100wh; */
-  margin: 0px;
-  padding: 0px;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
-}
-
-.container{
-  margin: 0px;
-  padding: 0px;
-  height: 100vh;
+  height: 60vh;
   min-width: 100wh;
   background-size: cover;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 
 #boardDiv {
-  background-color: #ffff;
-  border-radius: 0;
   height: 400px;
   width: 600px;
   cursor: crosshair;
-  border: 1px solid black;
+}
+
+canvas{
+  background-color: #fff;
+  border-radius: 10px;
 }
