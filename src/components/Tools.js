@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
 
-function Tools() {
+function Tools(props) {
     return (
         <div className="text-center">
             <Button variant="success btn-sm" data-target="tooltip" title="Save Paint">Save</Button> {' '}
@@ -21,7 +21,7 @@ function Tools() {
                 <ion-icon name="logo-facebook"></ion-icon>
             </Button> {' '}
 
-            <Button variant="danger btn-sm" data-target="tooltip" title="Clear the Paint board">Clear</Button>
+            <Button variant="danger btn-sm" data-target="tooltip" onClick={props.clearBoard} title="Clear the Paint board">Clear</Button>
         </div>
     )
 }

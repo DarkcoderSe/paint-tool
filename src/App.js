@@ -8,6 +8,17 @@ import Tools from './components/Tools';
 
 class App extends Component {
 
+  clearBoard = () => {
+    console.log("Clear Board");
+    const context = document.getElementById('canvas').getContext('2d');
+    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+    paint = false;
+    clickX = [];
+    clickY = [];
+    clickDrag = [];
+
+  }
+
   render() {
     return (
       <div>
@@ -21,7 +32,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col className="justify-content-center">
-              <Tools />
+              <Tools clearBoard={this.clearBoard} />
             </Col>
           </Row>
         </Container>
