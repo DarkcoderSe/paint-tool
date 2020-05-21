@@ -87,13 +87,13 @@ class PaintBoard extends Component {
 
   render() {
     return (
-      <div id="boardDiv"
-          onMouseDown={this.mouseDownHandle}
-          onMouseUp={this.mouseUpHandle}
-          onMouseMove={this.mouseMoveHandle}
-          onMouseLeave={this.mouseLeaveHandle}
-        >
-        <canvas id="canvas" height="400" width="600"></canvas>
+      <div id="boardDiv">
+        <canvas
+        onMouseDown={this.mouseDownHandle}
+        onMouseUp={this.mouseUpHandle}
+        onMouseMove={this.mouseMoveHandle}
+        onMouseLeave={this.mouseLeaveHandle}
+        id="canvas" height="400" width="600"></canvas>
       </div>
     )
   }
