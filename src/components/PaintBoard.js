@@ -68,9 +68,9 @@ class PaintBoard extends Component {
   redraw = () => {
     const context = document.getElementById('canvas').getContext('2d');
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-    context.strokeStyle = '#02b3e4';
+    context.strokeStyle = '#000';
     context.lineJoin = 'round';
-    context.lineWidth = 5;
+    context.lineWidth = 2;
 
     for (let i = 0; i < this.state.clickX.length; i++) {
       context.beginPath();
